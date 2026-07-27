@@ -1,0 +1,12 @@
+{
+  "name": "locus-bodyworks",
+  "version": "1.0.0",
+  "description": "Locus Bodyworks website - built with Eleventy",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}

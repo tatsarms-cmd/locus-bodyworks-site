@@ -1,0 +1,10 @@
+---
+layout: layout.njk
+---
+<article class="post-body">
+  <p class="meta">Tatiana Armstrong · {{ date | readableDate }}{% if category %} · {{ category }}{% endif %}</p>
+  <h1>{{ title }}</h1>
+  {% if image %}<img src="{{ image }}" alt="">{% endif %}
+  {{ content | safe }}
+  <a class="back-link" href="/notes/">← Back to Notes</a>
+</article>

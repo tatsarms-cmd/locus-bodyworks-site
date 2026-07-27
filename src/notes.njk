@@ -1,0 +1,25 @@
+---
+layout: layout.njk
+title: Notes — Locus Bodyworks
+permalink: /notes/
+---
+<section class="section">
+  <span class="eyebrow">Notes</span>
+  <h1>Blogs and Notes</h1>
+
+  <div class="post-list">
+    {% for post in collections.posts %}
+    <article class="post-preview">
+      {% if post.data.image %}
+      <img src="{{ post.data.image }}" alt="">
+      {% endif %}
+      <div>
+        <p class="meta">Tatiana Armstrong · {{ post.data.date | readableDate }}{% if post.data.category %} · {{ post.data.category }}{% endif %}</p>
+        <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+        <p class="excerpt">{{ post.data.excerpt }}</p>
+        <a class="read-more" href="{{ post.url }}">Read More →</a>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>

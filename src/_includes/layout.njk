@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title or "Locus Bodyworks" }}</title>
+  <meta name="description" content="{{ description or "Massage therapy, sports massage, and yoga therapy with Tatiana Armstrong in Durango, Colorado." }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="grain"></div>
+
+  <header class="site-header">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" width="34" height="34"><path d="M24 4c8 6 14 14 14 22a14 14 0 1 1-28 0c0-8 6-16 14-22Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 16c3 3 6 7 6 11a6 6 0 1 1-12 0c0-4 3-8 6-11Z" fill="currentColor"/></svg>
+      </span>
+      Locus Bodyworks
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="site-nav">
+      <a href="/massage-offerings/">Massage</a>
+      <a href="/yoga/">Yoga</a>
+      <a href="/#about">About</a>
+      <a href="/notes/">Notes</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" width="30" height="30"><path d="M24 4c8 6 14 14 14 22a14 14 0 1 1-28 0c0-8 6-16 14-22Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 16c3 3 6 7 6 11a6 6 0 1 1-12 0c0-4 3-8 6-11Z" fill="currentColor"/></svg>
+        </span>
+        <p>Locus Bodyworks</p>
+      </div>
+
+      <a class="footer-cta" href="/contact/">Contact // Book</a>
+
+      <p class="footer-contact">
+        <a href="tel:9703359309">(970) 335-9309</a><br>
+        Durango, Colorado<br>
+        1129 Main Ave, Ste. 203
+      </p>
+
+      <p class="footer-hours">
+        Hours<br>
+        Monday – Friday<br>
+        10am – 6pm
+      </p>
+
+      <a class="footer-book" href="https://book.squareup.com/appointments/s2jerio9fmb4mg/location/LEXQV8KBTGWRV/services">Booking for Return Clients</a>
+    </div>
+
+    <div class="footer-signup">
+      <p>Sign up with your email address to receive news and updates.</p>
+      <!--
+        GOOGLE FORM EMAIL SIGNUP
+        Replace YOUR_FORM_ID below with your real Google Form's embed ID.
+        In Google Forms: Send > the "<>" embed icon > copy the src URL from
+        the iframe code it gives you, and paste it in below.
+      -->
+      <iframe
+        src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true"
+        width="100%"
+        height="480"
+        style="border:none; max-width: 480px; background: var(--cream); border-radius: 8px;"
+        title="Email sign-up">
+        Loading…
+      </iframe>
+      <p class="footer-fine-print">We respect your privacy.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector(".nav-toggle").addEventListener("click", function () {
+      document.body.classList.toggle("nav-open");
+      this.setAttribute("aria-expanded", document.body.classList.contains("nav-open"));
+    });
+  </script>
+</body>
+</html>
