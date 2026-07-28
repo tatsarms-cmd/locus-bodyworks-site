@@ -1,81 +1,92 @@
-/* ---------- Tokens ---------- */
-:root {
-  --moss: #4b5a3f;
-  --moss-dark: #384330;
-  --sand: #f1ece0;
-  --cream: #fbf8f2;
-  --clay: #b5654a;
-  --ink: #2b2620;
-  --stone: #79725f;
-  --line: rgba(43, 38, 32, 0.12);
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title or "Locus Bodyworks" }}</title>
+  <meta name="description" content="{{ description or "Massage therapy, sports massage, and yoga therapy with Tatiana Armstrong in Durango, Colorado." }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="grain"></div>
 
-  --display: "Albert Sans", -apple-system, BlinkMacSystemFont, sans-serif;
-  --body: "Albert Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  <header class="site-header">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" width="34" height="34"><path d="M24 4c8 6 14 14 14 22a14 14 0 1 1-28 0c0-8 6-16 14-22Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 16c3 3 6 7 6 11a6 6 0 1 1-12 0c0-4 3-8 6-11Z" fill="currentColor"/></svg>
+      </span>
+      Locus Bodyworks
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="site-nav">
+      <a href="/massage-offerings/">Massage</a>
+      <a href="/yoga/">Yoga</a>
+      <a href="/#about">About</a>
+      <a href="/notes/">Notes</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </header>
 
-  --max: 1120px;
-}
+  <main>
+    {{ content | safe }}
+  </main>
 
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" width="30" height="30"><path d="M24 4c8 6 14 14 14 22a14 14 0 1 1-28 0c0-8 6-16 14-22Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 16c3 3 6 7 6 11a6 6 0 1 1-12 0c0-4 3-8 6-11Z" fill="currentColor"/></svg>
+        </span>
+        <p>Locus Bodyworks</p>
+      </div>
 
-body {
-  margin: 0;
-  font-family: var(--body);
-  color: var(--ink);
-  background: var(--cream);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
+      <a class="footer-cta" href="/contact/">Contact // Book</a>
 
-.sr-only {
-  position: absolute; width: 1px; height: 1px;
-  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
-}
+      <p class="footer-contact">
+        <a href="tel:9703359309">(970) 335-9309</a><br>
+        Durango, Colorado<br>
+        1129 Main Ave, Ste. 203
+      </p>
 
-a { color: inherit; }
+      <p class="footer-hours">
+        Hours<br>
+        Monday – Friday<br>
+        10am – 6pm
+      </p>
 
-h1, h2, h3, h4 {
-  font-family: var(--display);
-  font-weight: 700;
-  line-height: 1.15;
-  margin: 0 0 0.5em;
-}
+      <a class="footer-book" href="https://book.squareup.com/appointments/s2jerio9fmb4mg/location/LEXQV8KBTGWRV/services">Booking for Return Clients</a>
+    </div>
 
-h1, h2, h4 {
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-}
+    <div class="footer-signup">
+      <p>Sign up with your email address to receive news and updates.</p>
+      <!--
+        GOOGLE FORM EMAIL SIGNUP
+        Replace YOUR_FORM_ID below with your real Google Form's embed ID.
+        In Google Forms: Send > the "<>" embed icon > copy the src URL from
+        the iframe code it gives you, and paste it in below.
+      -->
+      <iframe
+        src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true"
+        width="100%"
+        height="480"
+        style="border:none; max-width: 480px; background: var(--cream); border-radius: 8px;"
+        title="Email sign-up">
+        Loading…
+      </iframe>
+      <p class="footer-fine-print">We respect your privacy.</p>
+    </div>
+  </footer>
 
-h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 700; }
-h2 { font-size: clamp(1.6rem, 3vw, 2.3rem); }
-h3 { font-size: 1.3rem; font-weight: 600; }
-
-p { margin: 0 0 1em; }
-
-/* faint paper-grain overlay so flat color fields don't look too digital */
-.grain {
-  position: fixed; inset: 0; pointer-events: none; z-index: 999;
-  opacity: 0.035; mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-/* ---------- Header ---------- */
-.site-header {
-  display: flex; align-items: center; justify-content: space-between;
-  max-width: var(--max); margin: 0 auto; padding: 1.4rem 1.5rem;
-  position: relative; z-index: 10;
-}
-
-.brand {
-  display: flex; align-items: center; gap: 0.6rem;
-  font-family: var(--display); font-size: 1.15rem; letter-spacing: 0.02em;
-  text-decoration: none; color: var(--moss-dark);
-}
-.brand-mark { color: var(--clay); display: inline-flex; }
-
-.site-nav { display: flex; gap: 2rem; }
-.site-nav a {
-  text-decoration: none; font-size: 0.95rem; letter-spacing: 0.02em;
-  color: var(--ink); position: relative; padding-bottom: 2px;
-}
-.site-nav
+  <script>
+    document.querySelector(".nav-toggle").addEventListener("click", function () {
+      document.body.classList.toggle("nav-open");
+      this.setAttribute("aria-expanded", document.body.classList.contains("nav-open"));
+    });
+  </script>
+</body>
+</html>
