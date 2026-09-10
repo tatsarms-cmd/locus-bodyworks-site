@@ -7,29 +7,37 @@
   <meta name="description" content="{{ description or "Massage therapy, sports massage, and yoga therapy with Tatiana Armstrong in Durango, Colorado." }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,200;12..96,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
-  <div class="grain"></div>
+<body class="{{ 'dark-header' if page.url == '/contact/' }}">
 
   <header class="site-header">
-    <a class="brand" href="/">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 48 48" width="34" height="34"><path d="M24 4c8 6 14 14 14 22a14 14 0 1 1-28 0c0-8 6-16 14-22Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 16c3 3 6 7 6 11a6 6 0 1 1-12 0c0-4 3-8 6-11Z" fill="currentColor"/></svg>
-      </span>
-      Locus Bodyworks
-    </a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-    <nav class="site-nav" id="site-nav">
-      <a href="/massage-offerings/">Massage</a>
-      <a href="/yoga/">Yoga</a>
-      <a href="/#about">About</a>
-      <a href="/notes/">Notes</a>
-      <a href="/contact/">Contact</a>
-    </nav>
+    <div class="site-header-inner">
+      <a class="brand fade-in" href="/">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" width="30" height="30"><path d="M24 4c8 6 14 14 14 22a14 14 0 1 1-28 0c0-8 6-16 14-22Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 16c3 3 6 7 6 11a6 6 0 1 1-12 0c0-4 3-8 6-11Z" fill="currentColor"/></svg>
+        </span>
+        Locus Bodyworks
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav">
+        <a href="/massage-offerings/">Massage</a>
+        <a href="/yoga/">Yoga</a>
+        <a href="/#about">About</a>
+        <a href="/notes/">Notes</a>
+        <a href="/contact/"{% if page.url == '/contact/' %} class="active"{% endif %}>Contact</a>
+      </nav>
+    </div>
+    {% if page.url == '/contact/' %}
+    <div class="contact-hero-copy">
+      <h1 class="rise-in">Schedule a massage</h1>
+      <h1 class="rise-in" style="animation-delay:.18s">Book a class</h1>
+      <h1 class="rise-in" style="animation-delay:.31s">Join a workshop</h1>
+    </div>
+    {% endif %}
   </header>
 
   <main>
@@ -38,50 +46,44 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <div class="footer-brand">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 48 48" width="30" height="30"><path d="M24 4c8 6 14 14 14 22a14 14 0 1 1-28 0c0-8 6-16 14-22Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 16c3 3 6 7 6 11a6 6 0 1 1-12 0c0-4 3-8 6-11Z" fill="currentColor"/></svg>
-        </span>
-        <p>Locus Bodyworks</p>
+      <div>
+        <div class="footer-brand">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 48 48" width="30" height="30"><path d="M24 4c8 6 14 14 14 22a14 14 0 1 1-28 0c0-8 6-16 14-22Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 16c3 3 6 7 6 11a6 6 0 1 1-12 0c0-4 3-8 6-11Z" fill="currentColor"/></svg>
+          </span>
+          <p>Locus Bodyworks</p>
+        </div>
+        <div class="footer-rule"></div>
+        <div class="footer-links">
+          <div>
+            <p><a class="footer-cta" href="/contact/">Contact // Book</a></p>
+            <p class="footer-contact"><a href="tel:9703359309">(970) 335-9309</a><br>Durango, Colorado</p>
+          </div>
+          <div>
+            <p class="footer-address">1129 Main Ave, Ste. 203</p>
+            <p class="footer-hours">Hours<br>Monday – Friday<br>10am – 6pm</p>
+          </div>
+        </div>
       </div>
 
-      <a class="footer-cta" href="/contact/">Contact // Book</a>
-
-      <p class="footer-contact">
-        <a href="tel:9703359309">(970) 335-9309</a><br>
-        Durango, Colorado<br>
-        1129 Main Ave, Ste. 203
-      </p>
-
-      <p class="footer-hours">
-        Hours<br>
-        Monday – Friday<br>
-        10am – 6pm
-      </p>
-
-      <a class="footer-book" href="https://book.squareup.com/appointments/s2jerio9fmb4mg/location/LEXQV8KBTGWRV/services">Booking for Return Clients</a>
+      <div class="footer-signup">
+        <p>Sign up with your email address to receive news and updates.</p>
+        <!--
+          GOOGLE FORM EMAIL SIGNUP
+          Replace YOUR_FORM_ID below with your real Google Form's URL.
+          In Google Forms: Send > the link icon > copy the shareable URL,
+          and paste it in below (the href on the Sign Up button).
+        -->
+        <a class="btn btn--outline" href="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform" target="_blank" rel="noreferrer">Sign Up</a>
+        <p class="footer-fine-print">We respect your privacy.</p>
+      </div>
     </div>
-
-    <div class="footer-signup">
-      <p>Sign up with your email address to receive news and updates.</p>
-      <!--
-        GOOGLE FORM EMAIL SIGNUP
-        Replace YOUR_FORM_ID below with your real Google Form's embed ID.
-        In Google Forms: Send > the "<>" embed icon > copy the src URL from
-        the iframe code it gives you, and paste it in below.
-      -->
-      <iframe
-        src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true"
-        width="100%"
-        height="480"
-        style="border:none; max-width: 480px; background: var(--cream); border-radius: 8px;"
-        title="Email sign-up">
-        Loading…
-      </iframe>
-      <p class="footer-fine-print">We respect your privacy.</p>
+    <div class="footer-bottom">
+      <a href="https://book.squareup.com/appointments/s2jerio9fmb4mg/location/LEXQV8KBTGWRV/services" target="_blank" rel="noreferrer">Booking for Return Clients</a>
     </div>
   </footer>
 
+  <script src="/js/main.js"></script>
   <script>
     document.querySelector(".nav-toggle").addEventListener("click", function () {
       document.body.classList.toggle("nav-open");

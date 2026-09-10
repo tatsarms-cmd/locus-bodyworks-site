@@ -1,92 +1,494 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ title or "Locus Bodyworks" }}</title>
-  <meta name="description" content="{{ description or "Massage therapy, sports massage, and yoga therapy with Tatiana Armstrong in Durango, Colorado." }}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-  <div class="grain"></div>
+/* Locus Bodyworks — site styles
+   Design tokens ported from the Claude Design handoff. */
 
-  <header class="site-header">
-    <a class="brand" href="/">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 48 48" width="34" height="34"><path d="M24 4c8 6 14 14 14 22a14 14 0 1 1-28 0c0-8 6-16 14-22Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 16c3 3 6 7 6 11a6 6 0 1 1-12 0c0-4 3-8 6-11Z" fill="currentColor"/></svg>
-      </span>
-      Locus Bodyworks
-    </a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-    <nav class="site-nav" id="site-nav">
-      <a href="/massage-offerings/">Massage</a>
-      <a href="/yoga/">Yoga</a>
-      <a href="/#about">About</a>
-      <a href="/notes/">Notes</a>
-      <a href="/contact/">Contact</a>
-    </nav>
-  </header>
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --cream: #e9e3d8;
+  --sand: #f6f2ea;
+  --green-dark: #26322d;
+  --green-mid: #415440;
+  --cyan-hover: #b8faff;
+  --black-12: rgba(0,0,0,0.12);
+  --black-45: rgba(0,0,0,0.45);
+  --stone: #55554f;
 
-  <main>
-    {{ content | safe }}
-  </main>
+  --font-display: "Albert Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Bricolage Grotesque", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 48 48" width="30" height="30"><path d="M24 4c8 6 14 14 14 22a14 14 0 1 1-28 0c0-8 6-16 14-22Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 16c3 3 6 7 6 11a6 6 0 1 1-12 0c0-4 3-8 6-11Z" fill="currentColor"/></svg>
-        </span>
-        <p>Locus Bodyworks</p>
-      </div>
+  --radius-image: 20px;
+  --container-max: 1200px;
+}
 
-      <a class="footer-cta" href="/contact/">Contact // Book</a>
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
-      <p class="footer-contact">
-        <a href="tel:9703359309">(970) 335-9309</a><br>
-        Durango, Colorado<br>
-        1129 Main Ave, Ste. 203
-      </p>
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
 
-      <p class="footer-hours">
-        Hours<br>
-        Monday – Friday<br>
-        10am – 6pm
-      </p>
+img { max-width: 100%; display: block; }
+a { color: var(--green-dark); }
+a:hover { color: var(--green-mid); }
 
-      <a class="footer-book" href="https://book.squareup.com/appointments/s2jerio9fmb4mg/location/LEXQV8KBTGWRV/services">Booking for Return Clients</a>
-    </div>
+.section {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+}
 
-    <div class="footer-signup">
-      <p>Sign up with your email address to receive news and updates.</p>
-      <!--
-        GOOGLE FORM EMAIL SIGNUP
-        Replace YOUR_FORM_ID below with your real Google Form's embed ID.
-        In Google Forms: Send > the "<>" embed icon > copy the src URL from
-        the iframe code it gives you, and paste it in below.
-      -->
-      <iframe
-        src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true"
-        width="100%"
-        height="480"
-        style="border:none; max-width: 480px; background: var(--cream); border-radius: 8px;"
-        title="Email sign-up">
-        Loading…
-      </iframe>
-      <p class="footer-fine-print">We respect your privacy.</p>
-    </div>
-  </footer>
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+}
+h1 { font-size: 2.75rem; line-height: 1.15; letter-spacing: 2px; }
+h2 { font-size: 2.25rem; line-height: 1.2; letter-spacing: 1.5px; }
+h3 { font-size: 1.3rem; letter-spacing: 1px; }
+p { line-height: 1.6; font-weight: 200; }
+.rule { border-top: 1px solid #000; margin: 1.5rem 0; }
 
-  <script>
-    document.querySelector(".nav-toggle").addEventListener("click", function () {
-      document.body.classList.toggle("nav-open");
-      this.setAttribute("aria-expanded", document.body.classList.contains("nav-open"));
-    });
-  </script>
-</body>
-</html>
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  padding: 3px 8px;
+}
+
+/* ---------- animations ---------- */
+@keyframes hlwipe { to { background-size: 100% 100%; } }
+@keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+@keyframes risein { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .hl, .fade-in, .rise-in { animation: none !important; opacity: 1 !important; background-size: 100% 100% !important; transform: none !important; }
+}
+
+.fade-in { opacity: 0; animation: fadein 1s ease forwards; }
+.rise-in { opacity: 0; animation: risein .7s ease forwards; }
+
+.hl {
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  animation: hlwipe .8s .2s cubic-bezier(.4,0,.2,1) forwards;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 4px 10px;
+}
+.hl-green-mid { background-image: linear-gradient(var(--green-mid), var(--green-mid)); color: #fff; }
+.hl-green-dark { background-image: linear-gradient(var(--green-dark), var(--green-dark)); color: #fff; }
+.hl-cream-on-dark { background-image: linear-gradient(var(--cream), var(--cream)); color: var(--green-dark); }
+.hl-cream { background-image: linear-gradient(var(--cream), var(--cream)); }
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+  height: 60px;
+  padding: 0 32px;
+  border: none;
+  cursor: pointer;
+  background-color: var(--green-dark);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--white);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: opacity .15s ease, color .15s ease;
+}
+.btn:hover { opacity: .8; color: var(--cyan-hover); }
+.btn--outline { background-color: transparent; color: var(--green-dark); box-shadow: inset 0 0 0 1px var(--green-dark); }
+.dark-header .btn--outline,
+.section-philosophy .btn--outline,
+.yoga-therapy-card .btn--outline,
+.site-footer .btn--outline { background-color: var(--white); color: var(--black); box-shadow: none; }
+
+/* ---------- header ---------- */
+.site-header {
+  background: var(--white);
+  border-bottom: 1px solid var(--black-12);
+}
+.site-header-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 1.1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  position: relative;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--black);
+  text-decoration: none;
+}
+.brand-mark { color: var(--green-dark); display: inline-flex; }
+.site-nav { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
+.site-nav a {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  color: var(--black);
+  text-decoration: none;
+}
+.site-nav a:hover { color: var(--cyan-hover); }
+.site-nav a.active { text-decoration: underline; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 34px; height: 34px;
+  background: none; border: none; cursor: pointer;
+}
+.nav-toggle span { display: block; height: 2px; background: currentColor; }
+
+@media (max-width: 780px) {
+  .nav-toggle { display: flex; }
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: var(--white);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.5rem 1.5rem;
+    border-bottom: 1px solid var(--black-12);
+    z-index: 5;
+  }
+  body.nav-open .site-nav { display: flex; }
+}
+
+body.dark-header .site-nav { background: var(--green-dark); }
+
+/* dark header: contact page */
+body.dark-header .site-header { background: var(--green-dark); border-bottom: none; }
+body.dark-header .brand,
+body.dark-header .site-nav a { color: #fff; }
+body.dark-header .brand-mark { color: #fff; }
+body.dark-header { background: var(--green-dark); }
+.contact-hero-copy {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 2rem 1.5rem 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.contact-hero-copy h1 { color: #fff; margin: 0; font-size: 2.6rem; }
+
+@media (max-width: 600px) {
+  .contact-hero-copy h1 { font-size: 1.9rem; }
+}
+
+/* ---------- hero ---------- */
+.hero {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  gap: 3rem;
+  align-items: center;
+}
+.hero h1 { font-size: 2.6rem; margin-bottom: 1.25rem; }
+.hero-sub { margin: 0 0 1.75rem; }
+.hero .lede {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  max-width: 480px;
+}
+.hero .tags {
+  font-family: var(--font-display);
+  font-size: .85rem;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  color: var(--stone);
+  max-width: 480px;
+}
+.hero-gallery { position: relative; min-height: 380px; }
+.hero-gallery .hero-img-a { width: 78%; height: 320px; object-fit: cover; border-radius: var(--radius-image); }
+.hero-gallery .hero-img-b {
+  position: absolute; right: 0; bottom: 0; width: 46%; height: 220px;
+  object-fit: cover; border-radius: var(--radius-image); box-shadow: 0 10px 30px rgba(0,0,0,.15);
+}
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; padding-bottom: 3rem; }
+  .hero-gallery { min-height: 300px; margin-top: 1rem; }
+}
+
+/* ---------- sand-wrapped sections ---------- */
+.section-sand-wrap { background: var(--cream); }
+
+/* ---------- offerings ---------- */
+.section-offerings { position: relative; overflow: hidden; }
+.section-offerings .offerings-bg { position: absolute; inset: 0; opacity: .5; }
+.section-offerings .offerings-bg img { width: 100%; height: 100%; object-fit: cover; }
+.section-offerings .offerings-scrim { position: absolute; inset: 0; background: var(--cream); opacity: .15; }
+.section-offerings .section { position: relative; }
+.offerings-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 2.5rem;
+  margin-top: 2rem;
+}
+.offering-card img { width: 100%; height: 220px; object-fit: cover; border-radius: var(--radius-image); margin-bottom: 1.25rem; }
+.offering-card ul { list-style: none; margin: 0 0 1.5rem; padding: 0; }
+.offering-card li { padding: .2rem 0; font-size: 1.05rem; font-weight: 200; }
+
+@media (max-width: 760px) {
+  .offerings-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- about ---------- */
+.about-section { padding-top: 6rem; padding-bottom: 6rem; }
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0,1.1fr) minmax(0,0.9fr);
+  gap: 3rem;
+  align-items: start;
+}
+.about-photos {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  grid-template-rows: auto auto;
+  gap: 12px;
+}
+.about-photos .about-img-tall { grid-row: 1 / 3; width: 100%; height: 100%; min-height: 380px; object-fit: cover; }
+.about-photos img:not(.about-img-tall) { width: 100%; height: 190px; object-fit: cover; }
+
+@media (max-width: 860px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .about-photos { grid-template-columns: 1fr 1fr; margin-top: 1.5rem; }
+}
+
+/* ---------- philosophy (dark band) ---------- */
+.section-philosophy { background: var(--green-mid); color: #fff; }
+.section-philosophy .section { text-align: left; }
+.eyebrow-on-dark { margin-bottom: 1.5rem; }
+
+/* ---------- testimonial ---------- */
+.testimonial {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 5rem 1.5rem 2rem;
+}
+.testimonial blockquote {
+  margin: 0 0 2rem;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  line-height: 1.8;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  max-width: 900px;
+  border-top: 1px solid #000;
+  padding-top: 2rem;
+}
+
+.get-in-touch p a { text-decoration: underline; }
+
+/* ---------- yoga page ---------- */
+.yoga-banner { background: var(--green-mid); color: #fff; }
+.yoga-banner .section { padding: 3rem 1.5rem; }
+.yoga-banner h1 { margin: 0; }
+
+.yoga-intro {
+  display: grid;
+  grid-template-columns: minmax(0,0.8fr) minmax(0,1.2fr);
+  gap: 3.5rem;
+  align-items: center;
+}
+.yoga-intro img { width: 100%; height: 460px; object-fit: cover; border-radius: var(--radius-image); }
+.yoga-intro h2 { font-size: 1.6rem; line-height: 1.5; }
+
+@media (max-width: 860px) {
+  .yoga-intro { grid-template-columns: 1fr; }
+  .yoga-intro img { height: 300px; }
+}
+
+.section-yoga-offerings { background: var(--green-mid); color: #fff; }
+.section-yoga-offerings .section { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,0.9fr); gap: 3rem; align-items: start; }
+.class-schedule { display: flex; flex-direction: column; gap: 1.75rem; margin-top: 1.5rem; }
+.class-item .when { margin: 0 0 .4rem; font-size: 1.1rem; font-weight: 200; }
+.class-item .where { margin: 0 0 .4rem; font-size: 1.1rem; font-weight: 200; }
+.yoga-therapy-card {
+  background: var(--green-dark);
+  padding: 2.75rem 2.25rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  align-self: stretch;
+  justify-content: center;
+}
+
+@media (max-width: 860px) {
+  .section-yoga-offerings .section { grid-template-columns: 1fr; }
+}
+
+.tag-cloud { display: flex; flex-wrap: wrap; gap: .75rem 2rem; margin-top: 1.5rem; }
+.tag-cloud span { font-size: 1rem; font-weight: 200; }
+
+.faq-heading-block { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.faq-heading-block span { display: inline-block; }
+
+.yoga-quote-section { padding: 4rem 1.5rem; max-width: var(--container-max); margin: 0 auto; }
+.yoga-quote-frame { position: relative; width: 100%; min-height: 380px; border-radius: var(--radius-image); overflow: hidden; }
+.yoga-quote-frame img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+.yoga-quote-frame .overlay {
+  position: relative; z-index: 1;
+  min-height: 380px;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center; padding: 3rem 12%;
+}
+.yoga-quote-frame.has-photo .overlay p { color: #fff; text-shadow: 0 1px 12px rgba(0,0,0,.55); }
+.yoga-quote-frame:not(.has-photo) { background: var(--green-mid); color: #fff; }
+.yoga-quote-frame .overlay p.quote {
+  margin: 0 0 1rem;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.yoga-quote-frame .overlay p.attribution { margin: 0; font-weight: 200; }
+
+@media (max-width: 600px) {
+  .yoga-quote-frame .overlay p.quote { font-size: 1.15rem; }
+}
+
+/* ---------- FAQ accordion (native <details>) ---------- */
+.faq-list { margin-top: 1.5rem; }
+.faq-item { border-top: 1px solid var(--black-45); }
+.faq-item:last-child { border-bottom: 1px solid var(--black-45); }
+.faq-item summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+  padding: 1.4rem 0; cursor: pointer; list-style: none;
+  font-family: var(--font-display); font-size: 1.05rem; letter-spacing: .8px; text-transform: uppercase;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: "+"; font-size: 1.2rem; font-family: var(--font-body); font-weight: 200; flex-shrink: 0; }
+.faq-item[open] summary::after { content: "\2014"; }
+.faq-item summary:hover { opacity: .75; }
+.faq-body { padding: 0 0 1.75rem; max-width: 780px; }
+.faq-body p { margin: 0 0 1rem; }
+.faq-body p:last-child { margin-bottom: 0; }
+
+/* dark-background FAQ variant (contact/yoga green sections use light faq elsewhere; this covers cream section) */
+#faq.section { }
+
+/* ---------- notes / blog ---------- */
+.post-list { display: flex; flex-direction: column; gap: 2.5rem; margin-top: 2rem; }
+.post-preview { display: grid; grid-template-columns: 220px minmax(0,1fr); gap: 2rem; align-items: start; }
+.post-preview img { width: 100%; height: 150px; object-fit: cover; border-radius: var(--radius-image); }
+.post-preview .meta { margin: 0 0 .4rem; font-size: .85rem; color: var(--stone); text-transform: uppercase; letter-spacing: .8px; }
+.post-preview h2 { font-size: 1.4rem; margin-bottom: .6rem; }
+.post-preview h2 a { color: inherit; text-decoration: none; }
+.post-preview .excerpt { margin: 0 0 .75rem; }
+.post-preview .read-more { font-weight: 700; text-decoration: underline; }
+
+@media (max-width: 600px) {
+  .post-preview { grid-template-columns: 1fr; }
+}
+
+.post-body { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+.post-body .meta { font-size: .85rem; color: var(--stone); text-transform: uppercase; letter-spacing: .8px; }
+.post-body img { width: 100%; border-radius: var(--radius-image); margin: 1.5rem 0; }
+.post-body p { margin: 0 0 1.25rem; }
+.post-body .back-link { display: inline-block; margin-top: 2rem; font-weight: 700; text-decoration: underline; }
+
+/* ---------- contact ---------- */
+.contact-section {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  gap: 4rem;
+  align-items: start;
+}
+.contact-info p { font-size: 1.1rem; }
+.contact-info .label { margin: 0 0 .2rem; font-weight: 700; }
+.contact-info .value { margin: 0 0 1.25rem; font-weight: 200; }
+.contact-form-panel { background: var(--sand); padding: 2.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
+.contact-form-panel .send-row { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+
+@media (max-width: 860px) {
+  .contact-section { grid-template-columns: 1fr; }
+}
+
+/* massage-offerings gift card page bits reuse .section/.btn already */
+
+/* ---------- forms ---------- */
+.field { display: flex; flex-direction: column; gap: .5rem; margin-bottom: 1.25rem; }
+.field label { font-size: 1rem; font-weight: 200; }
+.field label .req { font-size: .8rem; color: #555; }
+.field input, .field select, .field textarea {
+  border: 1px solid var(--black-12);
+  background: #fff;
+  padding: .8rem 1rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 200;
+  width: 100%;
+}
+.field textarea { resize: vertical; }
+.form-status[hidden] { display: none; }
+.form-status { font-size: .95rem; }
+
+/* ---------- footer ---------- */
+.site-footer { background: var(--green-dark); color: #fff; }
+.footer-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 4rem 1.5rem 3rem;
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  gap: 3rem;
+  align-items: start;
+}
+.footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem; }
+.footer-brand .brand-mark { color: #fff; }
+.footer-brand p { margin: 0; font-family: var(--font-display); letter-spacing: 1px; text-transform: uppercase; }
+.footer-rule { border-top: 1px solid rgba(255,255,255,.4); margin-bottom: 1.5rem; }
+.footer-links { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.footer-links p { margin: 0 0 .75rem; font-weight: 200; }
+.footer-cta { color: #fff; text-decoration: underline; font-weight: 200; }
+.footer-contact a { color: #fff; }
+.footer-address { text-decoration: none; }
+.footer-signup { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.25rem; padding-top: 2rem; }
+.footer-signup p { margin: 0; font-weight: 200; max-width: 360px; }
+.footer-fine-print { font-size: .85rem; }
+.footer-bottom { text-align: center; padding: 0 1.5rem 3rem; }
+.footer-bottom a { color: #fff; font-size: .85rem; text-decoration: underline; }
+
+@media (max-width: 760px) {
+  .footer-inner { grid-template-columns: 1fr; }
+}

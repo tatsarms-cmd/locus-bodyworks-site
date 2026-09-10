@@ -55,34 +55,46 @@ Then open the local address it prints (usually `http://localhost:8080`).
 
 No code, no database — just a text file per post.
 
-## 3. Email sign-up — Google Form embed
+## 3. Email sign-up — Google Form, linked (not embedded)
 
-Per your request, the footer's email sign-up is now a **Google Form embed**
-instead of a contact form service. To finish wiring it up:
+The footer's "Sign Up" button links out to a Google Form in a new tab,
+styled to match the rest of the site (this replaced the earlier iframe
+embed, which couldn't be restyled to match — see "Design update" below).
+To finish wiring it up:
 
 1. Create a form at [forms.google.com](https://forms.google.com).
 2. Add one "Short answer" question — e.g. "Email address" — and under that
    question's ⋮ menu, turn on **Response validation → Text → Email address**,
    so it rejects anything that isn't a valid email.
-3. Click **Send** (top right) → the **`<>`** embed tab → copy the `src="..."`
-   URL out of the `<iframe>` code it gives you.
-4. Open `src/_includes/layout.njk`, find the line that says
-   `src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true"`,
+3. Click **Send** (top right) → the **link** tab → copy the shareable URL.
+4. Open `src/_includes/layout.njk`, find the line with
+   `href="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform"`,
    and replace it with your real URL.
 5. Your form responses collect in a spreadsheet in your Google Drive
    (in the form editor, click the **Responses** tab → the green sheet icon).
 
-**Worth knowing:** a Google Form embed renders inside an iframe with Google's
-own styling — white background, Google's fonts — so it won't perfectly match
-the rest of the site's look. If that bothers you, an alternative is a plain
-button/link ("Sign up for updates") that opens the Google Form in a new tab
-instead of embedding it inline; that keeps your site's design fully
-consistent at the cost of one extra click for the visitor. Say the word if
-you'd like that swapped in instead.
+The Contact page's standalone form (email/topic/message) is back — it
+submits via Netlify Forms (see the deploy section below), so responses
+show up under **Forms** in your Netlify dashboard once deployed there.
 
-The standalone contact form (name/email/message) has been removed from the
-Contact page per your request — that page now just has the phone number,
-Square booking link, and address/hours.
+## 3b. Design update
+
+The whole site's visual language (fonts, colors, buttons, the highlight-wipe
+text effect, fade-ins, FAQ accordions) was reskinned to match a new design
+mockup, while keeping all the real content, photos, and blog posts already
+in this repo. Two spots are still placeholders pending real photos:
+
+- **Yoga page quote section** (`src/yoga.njk`, near the bottom) — currently
+  a solid green background. Once you upload a `succulents.png` to
+  `src/images/`, follow the comment right above the `.yoga-quote-frame` div
+  to swap in the photo background.
+- If you'd rather use a different altar/statue photo than the existing
+  `yoga-hero.jpeg` on the Yoga page, upload it (e.g. `altar.png`) to
+  `src/images/` and swap the filename in `src/yoga.njk`.
+
+Also fixed along the way: `src/css/style.css` had somehow ended up
+containing a stale copy of the page layout's HTML instead of CSS (so the
+site's styling was silently broken) — that's corrected now.
 
 ## 4. Deploying — recommended host: Netlify (free tier)
 
@@ -96,11 +108,10 @@ Square booking link, and address/hours.
 6. **Connect your real domain**: Site settings → Domain management → Add a domain → follow the DNS instructions.
 7. Netlify auto-provisions free HTTPS (SSL) once the domain is connected.
 
-Since the site no longer uses Netlify's built-in form handling (the sign-up
-is now a Google Form embed, and the contact form was removed), you're no
-longer tied to Netlify specifically — [Cloudflare Pages](https://pages.cloudflare.com)
-works equally well as a free alternative with the same build command and
-publish directory, if you'd rather use that instead.
+The Contact page's form uses Netlify's built-in form handling (Netlify
+Forms), so this site is now tied to Netlify specifically for that feature —
+if you ever move to a different host, you'd need to swap in a different
+form backend (e.g. Formspree) for the contact form to keep working.
 
 ## 5. Things to double check before going live
 
