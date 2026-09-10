@@ -50,27 +50,18 @@ Then open the local address it prints (usually `http://localhost:8080`).
 
 No code, no database — just a text file per post.
 
-## 3. Email sign-up — Google Form, linked (not embedded)
+## 3. Contact form
 
-The footer's "Sign Up" button links out to a Google Form in a new tab,
-styled to match the rest of the site (this replaced the earlier iframe
-embed, which couldn't be restyled to match — see "Design update" below).
-To finish wiring it up:
+The Contact page's form (email/topic/message) submits via Netlify Forms
+(see the deploy section below), so responses show up under **Forms** in
+your Netlify dashboard once deployed there. Site configuration → Forms →
+Form notifications lets you get emailed on every new submission instead
+of checking the dashboard manually.
 
-1. Create a form at [forms.google.com](https://forms.google.com).
-2. Add one "Short answer" question — e.g. "Email address" — and under that
-   question's ⋮ menu, turn on **Response validation → Text → Email address**,
-   so it rejects anything that isn't a valid email.
-3. Click **Send** (top right) → the **link** tab → copy the shareable URL.
-4. Open `src/_includes/layout.njk`, find the line with
-   `href="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform"`,
-   and replace it with your real URL.
-5. Your form responses collect in a spreadsheet in your Google Drive
-   (in the form editor, click the **Responses** tab → the green sheet icon).
-
-The Contact page's standalone form (email/topic/message) is back — it
-submits via Netlify Forms (see the deploy section below), so responses
-show up under **Forms** in your Netlify dashboard once deployed there.
+The footer's email sign-up (a Google Form link) was removed per request —
+the footer is now just the logo and contact/hours info. If you want a
+newsletter sign-up back at some point, `src/_includes/layout.njk`'s
+`<footer>` is where it would go.
 
 ## 3b. Design update
 
