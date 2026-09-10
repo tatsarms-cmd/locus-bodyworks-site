@@ -11,18 +11,13 @@ You'll need [Node.js](https://nodejs.org/) installed (the free LTS version).
 npm install
 ```
 
-### Download the images (do this once, before you cancel Squarespace)
+### Images — already local, not on Squarespace
 
-The site's images are still hosted on Squarespace's own servers right now, so
-they'll break the day that subscription ends. Run this once, from your own
-computer, to pull them all down and store them in the project itself:
-
-```
-bash scripts/download-images.sh
-```
-
-That saves every photo into `src/images/`, already named to match what the
-templates expect — nothing else to configure.
+All site images live in `src/images/` and are committed to this repo — none
+of them are pulled from Squarespace's servers anymore, so cancelling that
+subscription won't break anything on this site. `scripts/download-images.sh`
+is kept around only as a record of where the originals came from; you don't
+need to run it.
 
 ### Preview the site locally
 
@@ -82,19 +77,18 @@ show up under **Forms** in your Netlify dashboard once deployed there.
 The whole site's visual language (fonts, colors, buttons, the highlight-wipe
 text effect, fade-ins, FAQ accordions) was reskinned to match a new design
 mockup, while keeping all the real content, photos, and blog posts already
-in this repo. Two spots are still placeholders pending real photos:
-
-- **Yoga page quote section** (`src/yoga.njk`, near the bottom) — currently
-  a solid green background. Once you upload a `succulents.png` to
-  `src/images/`, follow the comment right above the `.yoga-quote-frame` div
-  to swap in the photo background.
-- If you'd rather use a different altar/statue photo than the existing
-  `yoga-hero.jpeg` on the Yoga page, upload it (e.g. `altar.png`) to
-  `src/images/` and swap the filename in `src/yoga.njk`.
+in this repo. The real logo, the succulents photo on the Yoga page's closing
+quote section, and the Ganesha altar photo are all wired in and committed
+under `src/images/`.
 
 Also fixed along the way: `src/css/style.css` had somehow ended up
 containing a stale copy of the page layout's HTML instead of CSS (so the
 site's styling was silently broken) — that's corrected now.
+
+"Notes" was removed from the nav menu (per request) — the `/notes/` listing
+page and all the individual posts are untouched and still live at their
+URLs, just no longer linked from the header. Easy to re-add a nav link
+(`src/_includes/layout.njk`) if you change your mind later.
 
 ## 4. Deploying — recommended host: Netlify (free tier)
 
