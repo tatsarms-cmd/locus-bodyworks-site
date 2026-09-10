@@ -11,18 +11,13 @@ You'll need [Node.js](https://nodejs.org/) installed (the free LTS version).
 npm install
 ```
 
-### Download the images (do this once, before you cancel Squarespace)
+### Images — already local, not on Squarespace
 
-The site's images are still hosted on Squarespace's own servers right now, so
-they'll break the day that subscription ends. Run this once, from your own
-computer, to pull them all down and store them in the project itself:
-
-```
-bash scripts/download-images.sh
-```
-
-That saves every photo into `src/images/`, already named to match what the
-templates expect — nothing else to configure.
+All site images live in `src/images/` and are committed to this repo — none
+of them are pulled from Squarespace's servers anymore, so cancelling that
+subscription won't break anything on this site. `scripts/download-images.sh`
+is kept around only as a record of where the originals came from; you don't
+need to run it.
 
 ### Preview the site locally
 
@@ -55,46 +50,36 @@ Then open the local address it prints (usually `http://localhost:8080`).
 
 No code, no database — just a text file per post.
 
-## 3. Email sign-up — Google Form, linked (not embedded)
+## 3. Contact form
 
-The footer's "Sign Up" button links out to a Google Form in a new tab,
-styled to match the rest of the site (this replaced the earlier iframe
-embed, which couldn't be restyled to match — see "Design update" below).
-To finish wiring it up:
+The Contact page's form (email/topic/message) submits via Netlify Forms
+(see the deploy section below), so responses show up under **Forms** in
+your Netlify dashboard once deployed there. Site configuration → Forms →
+Form notifications lets you get emailed on every new submission instead
+of checking the dashboard manually.
 
-1. Create a form at [forms.google.com](https://forms.google.com).
-2. Add one "Short answer" question — e.g. "Email address" — and under that
-   question's ⋮ menu, turn on **Response validation → Text → Email address**,
-   so it rejects anything that isn't a valid email.
-3. Click **Send** (top right) → the **link** tab → copy the shareable URL.
-4. Open `src/_includes/layout.njk`, find the line with
-   `href="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform"`,
-   and replace it with your real URL.
-5. Your form responses collect in a spreadsheet in your Google Drive
-   (in the form editor, click the **Responses** tab → the green sheet icon).
-
-The Contact page's standalone form (email/topic/message) is back — it
-submits via Netlify Forms (see the deploy section below), so responses
-show up under **Forms** in your Netlify dashboard once deployed there.
+The footer's email sign-up (a Google Form link) was removed per request —
+the footer is now just the logo and contact/hours info. If you want a
+newsletter sign-up back at some point, `src/_includes/layout.njk`'s
+`<footer>` is where it would go.
 
 ## 3b. Design update
 
 The whole site's visual language (fonts, colors, buttons, the highlight-wipe
 text effect, fade-ins, FAQ accordions) was reskinned to match a new design
 mockup, while keeping all the real content, photos, and blog posts already
-in this repo. Two spots are still placeholders pending real photos:
-
-- **Yoga page quote section** (`src/yoga.njk`, near the bottom) — currently
-  a solid green background. Once you upload a `succulents.png` to
-  `src/images/`, follow the comment right above the `.yoga-quote-frame` div
-  to swap in the photo background.
-- If you'd rather use a different altar/statue photo than the existing
-  `yoga-hero.jpeg` on the Yoga page, upload it (e.g. `altar.png`) to
-  `src/images/` and swap the filename in `src/yoga.njk`.
+in this repo. The real logo, the succulents photo on the Yoga page's closing
+quote section, and the Ganesha altar photo are all wired in and committed
+under `src/images/`.
 
 Also fixed along the way: `src/css/style.css` had somehow ended up
 containing a stale copy of the page layout's HTML instead of CSS (so the
 site's styling was silently broken) — that's corrected now.
+
+"Notes" was removed from the nav menu (per request) — the `/notes/` listing
+page and all the individual posts are untouched and still live at their
+URLs, just no longer linked from the header. Easy to re-add a nav link
+(`src/_includes/layout.njk`) if you change your mind later.
 
 ## 4. Deploying — recommended host: Netlify (free tier)
 

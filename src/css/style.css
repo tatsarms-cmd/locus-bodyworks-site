@@ -478,20 +478,18 @@ body.dark-header .site-nav a { color: #fff; }
   gap: 3rem;
   align-items: start;
 }
-.footer-brand { display: flex; align-items: center; margin-bottom: 1.5rem; }
-.footer-logo { height: 40px; width: auto; object-fit: contain; }
-.footer-rule { border-top: 1px solid rgba(255,255,255,.4); margin-bottom: 1.5rem; }
-.footer-links { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.footer-logo-col { display: flex; align-items: center; }
+.footer-logo-large { height: 120px; width: auto; object-fit: contain; }
+.footer-links { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; padding-top: .5rem; }
 .footer-links p { margin: 0 0 .75rem; font-weight: 200; }
 .footer-cta { color: #fff; text-decoration: underline; font-weight: 200; }
 .footer-contact a { color: #fff; }
 .footer-address { text-decoration: none; }
-.footer-signup { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.25rem; padding-top: 2rem; }
-.footer-signup p { margin: 0; font-weight: 200; max-width: 360px; }
-.footer-fine-print { font-size: .85rem; }
 .footer-bottom { text-align: center; padding: 0 1.5rem 3rem; }
 .footer-bottom a { color: #fff; font-size: .85rem; text-decoration: underline; }
 
 @media (max-width: 760px) {
   .footer-inner { grid-template-columns: 1fr; }
+  .footer-logo-large { height: 90px; }
+  .footer-links { grid-template-columns: 1fr; }
 }
