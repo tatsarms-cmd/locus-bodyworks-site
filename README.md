@@ -52,9 +52,9 @@ No code, no database — just a text file per post.
 
 ## 3. Contact form
 
-The Contact page embeds the Better Practice contact form
+The Contact page embeds the SimplePractice contact form
 (`https://tatiana-armstrong.clientsecure.me/contact-widget`) in an iframe,
-so submissions go to Better Practice rather than to Netlify Forms. The
+so submissions go to SimplePractice rather than to Netlify Forms. The
 page also has an "open in a new tab" link in case the embed doesn't load.
 
 The footer's email sign-up (a Google Form link) was removed per request —
@@ -96,5 +96,5 @@ URLs, just no longer linked from the header. Easy to re-add a nav link
 
 - **Domain/DNS**: you'll need access to wherever your domain (locusbodyworks.com) is registered — either move it off Squarespace Domains to a registrar like Namecheap/Cloudflare Registrar, or just repoint the DNS records if you keep it registered with Squarespace.
 - **Three blog posts contain full third-party poems** ("The Guest House" by Rumi, "What Grief Is Like" by Jennifer Williamson, and "Walk Slowly" by Danna Faulds) — I left the surrounding post structure in place but placeholder text instead of the copyrighted poem text, so you'll want to paste those back in yourself from your current live site (a quick copy-paste) before publishing. See `src/posts/the-guest-house-a-poem.md`, `src/posts/grief-poem.md`, and `src/posts/a-poem-for-the-change-of-spring.md`.
-- **Booking**: all booking buttons point to `https://tatiana-armstrong.clientsecure.me` (Better Practice). The **gift card** button on the Massage page still points at the old Square gift card link.
+- **Booking**: all booking buttons point to `https://tatiana-armstrong.clientsecure.me` (SimplePractice). The gift card section on the Massage page now has a "Contact" button that goes to the SimplePractice contact form (`/contact-widget`).
 - **Old blog post URL**: your live site's "Healing Through Consistent Yoga Practice" post has a random-character URL; I gave it a clean one (`/notes/healing-through-consistent-yoga-practice/`) instead. If that old URL is linked anywhere (social media, Google's index), consider adding a redirect from the old URL to the new one so you don't lose any traffic or search ranking to it.
