@@ -52,11 +52,10 @@ No code, no database — just a text file per post.
 
 ## 3. Contact form
 
-The Contact page's form (email/topic/message) submits via Netlify Forms
-(see the deploy section below), so responses show up under **Forms** in
-your Netlify dashboard once deployed there. Site configuration → Forms →
-Form notifications lets you get emailed on every new submission instead
-of checking the dashboard manually.
+The Contact page embeds the Better Practice contact form
+(`https://tatiana-armstrong.clientsecure.me/contact-widget`) in an iframe,
+so submissions go to Better Practice rather than to Netlify Forms. The
+page also has an "open in a new tab" link in case the embed doesn't load.
 
 The footer's email sign-up (a Google Form link) was removed per request —
 the footer is now just the logo and contact/hours info. If you want a
@@ -93,14 +92,9 @@ URLs, just no longer linked from the header. Easy to re-add a nav link
 6. **Connect your real domain**: Site settings → Domain management → Add a domain → follow the DNS instructions.
 7. Netlify auto-provisions free HTTPS (SSL) once the domain is connected.
 
-The Contact page's form uses Netlify's built-in form handling (Netlify
-Forms), so this site is now tied to Netlify specifically for that feature —
-if you ever move to a different host, you'd need to swap in a different
-form backend (e.g. Formspree) for the contact form to keep working.
-
 ## 5. Things to double check before going live
 
 - **Domain/DNS**: you'll need access to wherever your domain (locusbodyworks.com) is registered — either move it off Squarespace Domains to a registrar like Namecheap/Cloudflare Registrar, or just repoint the DNS records if you keep it registered with Squarespace.
 - **Three blog posts contain full third-party poems** ("The Guest House" by Rumi, "What Grief Is Like" by Jennifer Williamson, and "Walk Slowly" by Danna Faulds) — I left the surrounding post structure in place but placeholder text instead of the copyrighted poem text, so you'll want to paste those back in yourself from your current live site (a quick copy-paste) before publishing. See `src/posts/the-guest-house-a-poem.md`, `src/posts/grief-poem.md`, and `src/posts/a-poem-for-the-change-of-spring.md`.
-- **Booking/gift cards**: still point at your existing Square links, so nothing changes there.
+- **Booking**: all booking buttons point to `https://tatiana-armstrong.clientsecure.me` (Better Practice). The **gift card** button on the Massage page still points at the old Square gift card link.
 - **Old blog post URL**: your live site's "Healing Through Consistent Yoga Practice" post has a random-character URL; I gave it a clean one (`/notes/healing-through-consistent-yoga-practice/`) instead. If that old URL is linked anywhere (social media, Google's index), consider adding a redirect from the old URL to the new one so you don't lose any traffic or search ranking to it.
