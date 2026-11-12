@@ -295,6 +295,42 @@ body.dark-header .site-nav a { color: #fff; }
 .section-philosophy { background: var(--green-mid); color: #fff; }
 .section-philosophy .section { text-align: left; }
 .eyebrow-on-dark { margin-bottom: 1.5rem; }
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  align-items: center;
+}
+.philosophy-main { padding-right: 3rem; }
+.philosophy-credentials {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 3rem;
+  border-left: 1px solid var(--white);
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.75rem;
+  text-align: left;
+}
+.philosophy-credentials li {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+.philosophy-credentials span {
+  display: block;
+  margin-top: .35rem;
+  font-size: .85rem;
+  opacity: .8;
+}
+@media (max-width: 860px) {
+  .philosophy-grid { grid-template-columns: 1fr; }
+  .philosophy-main { padding-right: 0; }
+  .philosophy-credentials { border-left: none; border-top: 1px solid var(--white); padding: 2rem 0 0; margin-top: 2.5rem; }
+}
 
 /* ---------- testimonial ---------- */
 .testimonial {
