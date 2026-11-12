@@ -465,6 +465,8 @@ body.dark-header .site-nav a { color: #fff; }
 
 @media (max-width: 760px) {
   .gift-card-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .gift-card-text { text-align: center; }
+  .gift-card-text p { margin-left: auto; margin-right: auto; }
 }
 
 /* ---------- forms ---------- */
