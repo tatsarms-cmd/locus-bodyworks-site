@@ -310,7 +310,7 @@ body.dark-header .site-nav a { color: #fff; }
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1.75rem;
+  gap: 1.25rem;
   text-align: left;
 }
 .philosophy-credentials li {
@@ -319,12 +319,6 @@ body.dark-header .site-nav a { color: #fff; }
   letter-spacing: 1.6px;
   text-transform: uppercase;
   line-height: 1.4;
-}
-.philosophy-credentials span {
-  display: block;
-  margin-top: .35rem;
-  font-size: .85rem;
-  opacity: .8;
 }
 @media (max-width: 860px) {
   .philosophy-grid { grid-template-columns: 1fr; }
