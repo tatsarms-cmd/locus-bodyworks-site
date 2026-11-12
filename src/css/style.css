@@ -448,7 +448,24 @@ body.dark-header .site-nav a { color: #fff; }
   .contact-section { grid-template-columns: 1fr; }
 }
 
-/* massage-offerings gift card page bits reuse .section/.btn already */
+/* ---------- massage-offerings: gift card ---------- */
+.gift-card-section { padding-top: 0; }
+.gift-card-grid {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  gap: 3rem;
+  align-items: center;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.gift-card-img { width: 100%; height: auto; }
+.gift-card-text { text-align: left; }
+.gift-card-text h3 { margin-top: 0; }
+.gift-card-text p { max-width: 420px; }
+
+@media (max-width: 760px) {
+  .gift-card-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
 
 /* ---------- forms ---------- */
 .field { display: flex; flex-direction: column; gap: .5rem; margin-bottom: 1.25rem; }
