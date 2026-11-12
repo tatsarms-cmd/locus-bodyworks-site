@@ -449,7 +449,10 @@ body.dark-header .site-nav a { color: #fff; }
 }
 
 /* ---------- massage-offerings: gift card ---------- */
-.gift-card-section { padding-top: 0; }
+.section-gift-wrap { background: var(--green-mid); color: var(--white); }
+.section-gift-wrap h3 { color: var(--white); }
+.section-gift-wrap .btn { background-color: var(--white); color: var(--green-dark); }
+.section-gift-wrap .btn:hover { opacity: .85; color: var(--green-mid); }
 .gift-card-grid {
   display: grid;
   grid-template-columns: minmax(0,1fr) minmax(0,1fr);
